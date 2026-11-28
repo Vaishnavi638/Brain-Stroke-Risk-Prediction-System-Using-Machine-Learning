@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stroke Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f8f9fa;
+    }
+    .dashboard {
+      margin: 50px auto;
+      max-width: 900px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container dashboard">
+    <h2 class="text-center">Personalized Health Dashboard</h2>
+    <p class="text-center">Comparison of your values vs safe ranges</p>
+
+    <div class="text-center">
+      <img src="data:image/png;base64,{{ plot_url }}" class="img-fluid" alt="Health Chart">
+    </div>
+
+    <div class="mt-4">
+      <h4>Report:</h4>
+      <p><strong>Your BMI:</strong> {{ user_bmi }}</p>
+      <p>{{ bmi_msg }}</p>
+      <hr>
+      <p><strong>Your Glucose Level:</strong> {{ user_glucose }}</p>
+      <p>{{ glucose_msg }}</p>
+    </div>
+
+    <div class="text-center mt-3">
+      <a href="/" class="btn btn-primary">Back to Prediction</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result & Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #9dcaf7ff;
+            background-size: cover;
+        }
+        .btn-primary {
+            background-color: gold;
+            border-color: gold;
+            color: black;
+            font-weight: bold;
+        }
+        .btn-success {
+            background-color: #0aa8f1ff;
+            border-color: #0aa8f1ff;
+            color: white;
+            font-weight: bold;
+        }
+        .btn-primary:hover {
+            background-color: #f5b30eff;
+            border-color: #f5b30eff;
+        }
+        .btn-success:hover {
+            background-color: darkred;
+            border-color: darkred;
+        }
+        .dashboard {
+            margin: 50px auto;
+            max-width: 900px;
+            background: #eef5f8ff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP: Prediction Result -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">STROKE PREDICTION RESULT</h2>
+        <div class="alert alert-info text-center fs-4">
+            <p style="color: blue";><strong>Prediction:</strong> {{ prediction }}</p>
+            <p style="color: blue";><strong>Probability:</strong> {{ probability }}</p>
+        </div>
+    </div>
+
+    <!-- BELOW: Personalized Dashboard -->
+    <div class="container dashboard">
+        <h2 class="text-center" style="color: #3607f2ff";>Personalized Health Dashboard</h2>
+        <p class="text-center">Comparison of your values vs safe ranges</p>
+
+        <div class="text-center">
+            <img src="data:image/png;base64,{{ plot_url }}" class="img-fluid" alt="Health Chart">
+        </div>
+
+        <div class="mt-4">
+            <h4 style="color: #3607f2ff";>Report:</h4>
+            <p><strong>Your BMI:</strong> {{ user_bmi }}</p>
+            <p>{{ bmi_msg }}</p>
+            <hr>
+            <p><strong>Your Glucose Level:</strong> {{ user_glucose }}</p>
+            <p>{{ glucose_msg }}</p>
+            <hr>
+            <p><strong>Your Blood Pressure:</strong> {{ user_bp }}</p>
+            <p>{{ bp_msg }}</p>
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="/" class="btn btn-primary">Back to Prediction</a>
+            <a href="/suggestion?probability={{ prob_percent }}" class="btn btn-success">Suggestion</a>
+        </div>
+
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
